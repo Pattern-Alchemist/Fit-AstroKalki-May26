@@ -18,6 +18,11 @@ import WhatHappensAfter from "@/components/sections/WhatHappensAfter";
 import MessageIf from "@/components/sections/MessageIf";
 import Process from "@/components/sections/Process";
 import FAQ from "@/components/sections/FAQ";
+import CaseStudies from "@/components/sections/CaseStudies";
+import EmailSignup from "@/components/sections/EmailSignup";
+import BlogPreview from "@/components/sections/BlogPreview";
+import ReferralProgram from "@/components/sections/ReferralProgram";
+import LeadMagnetPopup from "@/components/sections/LeadMagnetPopup";
 import FinalCta from "@/components/sections/FinalCta";
 import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/common/FloatingWhatsApp";
@@ -46,13 +51,18 @@ export default function Home() {
       <IntentCTA />
       <Stats />
       <Testimonials />
+      <CaseStudies />
       <WhoThisIsFor />
       <WhatHappensAfter />
       <MessageIf />
       <Process />
+      <EmailSignup />
+      <BlogPreview />
+      <ReferralProgram />
       <FAQ />
       <FinalCta />
       <Footer />
+      <LeadMagnetPopup />
       <FloatingWhatsApp />
       <StickyWhatsAppBar />
     </div>
