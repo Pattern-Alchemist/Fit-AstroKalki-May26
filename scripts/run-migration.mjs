@@ -14,8 +14,15 @@ if (!databaseUrl) {
   process.exit(1);
 }
 
+// Parse the URL to handle SSL properly
+const url = new URL(databaseUrl);
 const pool = new Pool({
-  connectionString: databaseUrl,
+  host: url.hostname,
+  port: url.port,
+  database: url.pathname.slice(1),
+  user: url.username,
+  password: url.password,
+  ssl: 'require',
 });
 
 async function runMigration() {
