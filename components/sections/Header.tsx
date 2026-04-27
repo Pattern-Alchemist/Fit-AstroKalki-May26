@@ -19,8 +19,11 @@ export default function Header({ isScrolled }: HeaderProps) {
     { label: "Results", href: "#results" },
     { label: "Testimonials", href: "#testimonials" },
     { label: "FAQ", href: "#faq" },
-    { label: "Intake Form", href: "/intake" },
+    { label: "Intake", href: "/intake" },
     { label: "Booking", href: "/booking" },
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Videos", href: "/videos" },
+    { label: "Nutrition", href: "/nutrition" },
   ];
 
   const whatsappLink = generateWhatsAppLink(

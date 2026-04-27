@@ -3,15 +3,17 @@
 import { useState, useEffect } from 'react';
 import { X, Download, CheckCircle } from 'lucide-react';
 
-interface LeadMagnetPopupProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export default function LeadMagnetPopup({ isOpen, onClose }: LeadMagnetPopupProps) {
+export default function LeadMagnetPopup() {
+  const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Show popup after 3 seconds of page load
+  useEffect(() => {
+    const timer = setTimeout(() => setIsOpen(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +38,7 @@ export default function LeadMagnetPopup({ isOpen, onClose }: LeadMagnetPopupProp
         setTimeout(() => {
           setEmail('');
           setIsSubmitted(false);
-          onClose();
+          setIsOpen(false);
         }, 3000);
       }
     } catch (error) {
@@ -46,6 +48,10 @@ export default function LeadMagnetPopup({ isOpen, onClose }: LeadMagnetPopupProp
     }
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -53,7 +59,7 @@ export default function LeadMagnetPopup({ isOpen, onClose }: LeadMagnetPopupProp
       <div className="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-in fade-in zoom-in">
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-4 right-4 p-1 hover:bg-zinc-800 rounded-lg transition-colors z-10"
           aria-label="Close"
         >
